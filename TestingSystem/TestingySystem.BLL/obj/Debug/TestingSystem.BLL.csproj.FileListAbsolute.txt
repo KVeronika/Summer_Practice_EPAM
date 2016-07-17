@@ -1,0 +1,13 @@
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\TestingySystem.BLL.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\TestingySystem.BLL.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\BLLContracts.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\Common.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\DAOContracts.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\TestingSystem.DAO.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\BLLContracts.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\Common.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\DAOContracts.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\TestingSystem.DAO.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingSystem.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingySystem.BLL.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingySystem.BLL.pdb

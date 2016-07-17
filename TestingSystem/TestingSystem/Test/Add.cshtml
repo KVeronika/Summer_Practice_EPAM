@@ -1,0 +1,38 @@
+﻿@using TestingSystem.Models;
+@if (IsPost)
+{
+    var name = Request["Name"];
+
+    if (string.IsNullOrWhiteSpace(name))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+
+    Common.TestBll.Add(name);
+    Response.Redirect("~/Index");
+}
+else
+{
+    Layout = "~/_Layout.cshtml";
+    <div class="container">
+        <form action="~/Test/Add" method="post" class="form-horizontal">
+            <fieldset>
+                <div id="legend">
+                    <legend class="">Add test</legend>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Name">Name</label>
+                    <div class="controls">
+                        <input type="text" autocomplete="off" id="Name" name="Name" placeholder="" class="input-xlarge">
+                        <p class="help-block">Name can contain any letters or numbers, without spaces</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success ">Add</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+}

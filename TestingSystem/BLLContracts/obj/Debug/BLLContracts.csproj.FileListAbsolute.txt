@@ -1,0 +1,7 @@
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\bin\Debug\BLLContracts.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\bin\Debug\BLLContracts.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\bin\Debug\Common.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\bin\Debug\Common.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\obj\Debug\BLLContracts.csprojResolveAssemblyReference.cache
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\obj\Debug\BLLContracts.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\BLLContracts\obj\Debug\BLLContracts.pdb

@@ -1,0 +1,9 @@
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\TestingSystem.DAO.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\TestingSystem.DAO.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\Common.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\DAOContracts.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\Common.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\DAOContracts.pdb
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.csprojResolveAssemblyReference.cache
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.dll
+C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.pdb

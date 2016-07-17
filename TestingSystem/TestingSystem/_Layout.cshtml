@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Система тестирования знаний</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Test/Add">Create new test</a></li>
+                            <li><a href="~/Test/SelectTest">Add Question to en existing test</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <form action="~/Search" method="post" class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav nav-pills nav-stacked">
+                            <a href="~/Logout">Logout @User.Identity.Name</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav nav-pills nav-stacked"><a href="~/Login">Login</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+       @RenderBody()
+    <script src="~/scripts/jquery-1.9.1.js"></script>
+    <script src="~/scripts/bootstrap.js"></script>
+    <script src="~/scripts/timer.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@using TestingSystem.Models;
+@if (IsPost)
+{
+    var idTest = Request["idTest"];
+    var question = Request["Question"];
+    var answer = Request["Answer"];
+    int id=0;
+    if (string.IsNullOrWhiteSpace(question) || string.IsNullOrWhiteSpace(answer) || !int.TryParse(idTest, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+
+    Common.QuestionBll.Add(id,question,answer);
+    Response.Redirect("~/Index");
+}
+else
+{
+    Response.SetStatus(HttpStatusCode.NotFound);
+}

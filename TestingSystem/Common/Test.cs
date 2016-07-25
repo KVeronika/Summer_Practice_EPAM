@@ -15,24 +15,12 @@ namespace Entities
                 throw new ArgumentOutOfRangeException();
             }
 
-            this.id = id;
-            this.name = name;
+            this.Id = id;
+            this.Name = name;
         }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-        }
+        public int Id { get; }
 
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
+        public string Name { get; }
     }
 }

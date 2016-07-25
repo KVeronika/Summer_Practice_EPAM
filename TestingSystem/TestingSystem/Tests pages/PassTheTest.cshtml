@@ -1,0 +1,42 @@
+﻿@using Entities;
+@using TestingSystem.Models;
+@{
+    Layout = "~/_Layout.cshtml";
+}
+
+@if (IsPost)
+{
+    var idTest = Request["id"];
+    int id;
+    if (!int.TryParse(idTest, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+
+    List<Question> questions = Common.TestBll.GetAllQuestions(id);
+
+    <hr />
+    <div class="container container-questions">
+        <ol>
+            <form action="~/Tests pages/GetResultsTest" method="post" role="form">
+                @foreach (var item in questions)
+                {
+                    <li>
+                        <h3>@item.TextQuestion</h3>
+
+                        <label class="control-label" for="answer">Enter your answer</label>
+                        <input type="text" class="form-control" autocomplete="off" id="answer" name="@item.Id" placeholder="Enter answer" />
+                    </li>
+                }
+                <hr />
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success ">See results</button>
+                    </div>
+                    <input type="hidden" name="idTest" value="@id"/>
+                </div>
+            </form>
+        </ol>
+                
+    </div>
+}

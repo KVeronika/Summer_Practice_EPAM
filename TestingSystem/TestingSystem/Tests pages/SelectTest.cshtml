@@ -1,0 +1,65 @@
+﻿@using Entities;
+@using TestingSystem.Models;
+@{ 
+    Layout = "~/_Layout.cshtml";
+}
+@if (IsPost)
+{
+    var idTest = Request["id"];
+
+    int id;
+    if (!int.TryParse(idTest, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+    <div class="container">
+        <form action="~/Tests pages/AddQuestion" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <fieldset>
+                <div id="legend">
+                    <legend class="">Add Question</legend>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Question">Question</label>
+                    <div class="controls">
+                        <input type="text" id="Question" name="Question" placeholder="" class="input-xlarge">
+                        <p class="help-block">Name can contain any letters or numbers</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Answer">Answer</label>
+                    <div class="controls">
+                        <input type="text" id="Answer" name="Answer" placeholder="" class="input-xlarge">
+                        <p class="help-block">Answer can contain any letters or numbers, without spaces</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success ">Add</button>
+                        <input type="hidden" name="idTest" value="@id"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+}
+else
+{
+    List<Test> tests = Common.TestBll.GetAll();
+    <hr />
+    <div class="container container-tests">
+        <div class="col-md-3 col-sm-6 hero-feature ">
+            @foreach (var item in tests)
+            {
+                <div class="thumbnail">
+                    <div>
+                        <h3>@item.Name</h3>
+                        <form action="~/Tests pages/SelectTest" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="btn btn-success">Add question <i class="glyphicon glyphicon-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

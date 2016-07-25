@@ -127,11 +127,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Test\Add.cshtml" />
-    <Content Include="Test\AddQuestion.cshtml" />
-    <Content Include="Test\SelectTest.cshtml" />
-    <Content Include="Test\PassTheTest.cshtml" />
-    <Content Include="Test\GetResultsTest.cshtml" />
+    <Content Include="Tests pages\Add.cshtml" />
+    <Content Include="Tests pages\AddQuestion.cshtml" />
+    <Content Include="Tests pages\SelectTest.cshtml" />
+    <Content Include="Tests pages\PassTheTest.cshtml" />
+    <Content Include="Tests pages\GetResultsTest.cshtml" />
     <Content Include="Logout.cshtml" />
     <Content Include="Search.cshtml" />
     <None Include="Web.Debug.config">

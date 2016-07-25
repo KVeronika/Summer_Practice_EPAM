@@ -1,0 +1,56 @@
+﻿@using Entities;
+@using TestingSystem.Models;
+@{
+    Layout = "~/_Layout.cshtml";
+}
+@if (IsPost)
+{
+    var idTest = Request["idTest"];
+
+    int id;
+    if (!int.TryParse(idTest, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+    List<Question> questions = Common.TestBll.GetAllQuestions(id);
+
+    Dictionary<int, string> answer = new Dictionary<int, string>();
+
+    foreach (var item in questions)
+    {
+        answer.Add(item.Id, Request[item.Id.ToString()]);
+    }
+
+    Dictionary<int, bool> result = Common.TestBll.CheckTest(answer, id);
+
+
+    <hr />
+    <div class="container container-questions">
+        <ol>
+            <form action="~/Tests pages/GetResultsTest" method="post" role="form">
+                @foreach (var item in questions)
+                {
+                    <li>
+                        <h3>@item.TextQuestion</h3>
+
+                        <span class="control-label" for="answer">Your answer</span>
+                        <span>@answer.FirstOrDefault(n => n.Key == item.Id).Value</span>
+                        @if (result.FirstOrDefault(n => n.Key == item.Id).Value)
+                        {
+                            <span><i class="glyphicon glyphicon-ok"></i></span>
+                        }
+                        else
+                        {
+                            <span><i class="glyphicon glyphicon-remove"></i></span>
+                        }
+                    </li>
+                }
+                <hr />
+                <div class="control-group">
+                    <input type="hidden" name="idTest" value="@id" />
+                </div>
+            </form>
+        </ol>
+
+    </div>
+}

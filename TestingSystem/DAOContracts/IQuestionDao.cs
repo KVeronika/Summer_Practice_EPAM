@@ -2,6 +2,6 @@
 {
     public interface IQuestionDao
     {
-        void Add(int idTest, string question, string answer);
+        void Add(int idTest, string question, byte[] answer);
     }
 }

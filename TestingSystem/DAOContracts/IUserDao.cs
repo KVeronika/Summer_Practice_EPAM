@@ -2,6 +2,6 @@
 {
     public interface IUserDao
     {
-        void Add(string login, string password);
+        void Add(string login, byte[] password);
     }
 }

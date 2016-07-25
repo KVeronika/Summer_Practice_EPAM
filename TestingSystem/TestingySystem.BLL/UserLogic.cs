@@ -1,4 +1,6 @@
 ﻿using BLLContracts;
+using System.Linq;
+using System.Security.Cryptography;
 
 namespace TestingSystem.BLL
 {
@@ -6,7 +8,9 @@ namespace TestingSystem.BLL
     {
         public void Add(string login, string password)
         {
-            Common.UserDao.Add(login, password);
+            SHA256 mySHA256 = SHA256Managed.Create();
+            var tempPassword = password.ToCharArray().Select(n => (byte)n).ToArray();
+            Common.UserDao.Add(login, mySHA256.ComputeHash(tempPassword));
         }
     }
 }

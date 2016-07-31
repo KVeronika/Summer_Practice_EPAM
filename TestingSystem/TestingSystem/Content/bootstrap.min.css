@@ -32,4 +32,8 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
     input#password.form-control{
         width: 300px;
     }
+    input#confirmPassword.form-control{
+        width: 300px;
+    }
+
 /*# sourceMappingURL=bootstrap.min.css.map */

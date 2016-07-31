@@ -1,4 +1,5 @@
-﻿@using TestingSystem.Models;
+﻿@{ bool failed = false; }
+@using TestingSystem.Models;
 @{
     Layout = "~/_Layout.cshtml";
 }
@@ -7,24 +8,35 @@
     var login = Request["login"];
     var password = Request["password"];
 
-    if(string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
+    if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
     {
         Response.SetStatus(HttpStatusCode.BadRequest);
         return;
     }
 
-    FormsAuthentication.SetAuthCookie(login, createPersistentCookie: false);
-
-    Common.UserBll.Add(login, password);
-    var returnUrl = Request["ReturnUrl"];
-    if (string.IsNullOrWhiteSpace(returnUrl))
+    if (Common.UserBll.CanLogin(login, password))
     {
-        returnUrl = "~";
+        FormsAuthentication.SetAuthCookie(login, createPersistentCookie: false);
+        var returnUrl = Request["ReturnUrl"];
+        if (string.IsNullOrWhiteSpace(returnUrl))
+        {
+            returnUrl = "~";
+        }
+        Response.Redirect(returnUrl);
+        return;
     }
-    Response.Redirect(returnUrl);
-    return;
+    else
+    {
+        failed = true;
+    }
 }
 <div class="container">
+    @if (failed)
+    {
+        <div class="alert alert-danger" style="margin-top: 60px">
+            Password is not correct
+        </div>
+    }
     <form class="form-group form-login" action="~/Login.cshtml" method="post" role="form">
         <div class="form-group">
             <label class="control-label" for="login">Login</label>

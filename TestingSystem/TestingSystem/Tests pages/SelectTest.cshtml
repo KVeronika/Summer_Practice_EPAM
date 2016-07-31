@@ -3,6 +3,10 @@
 @{ 
     Layout = "~/_Layout.cshtml";
 }
+@if (!User.Identity.IsAuthenticated)
+{
+    Response.Redirect("~/Login");
+}
 @if (IsPost)
 {
     var idTest = Request["id"];

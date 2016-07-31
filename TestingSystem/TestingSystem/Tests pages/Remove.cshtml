@@ -1,0 +1,47 @@
+﻿@using Entities;
+@using TestingSystem.Models;
+@{
+    Layout = "~/_Layout.cshtml";
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    Response.Redirect("~/Login");
+}
+@if(!User.IsInRole("Admin"))
+{
+    Response.SetStatus(HttpStatusCode.Forbidden);
+}
+@if (IsPost)
+{
+    var idTest = Request["id"];
+
+    int id;
+    if (!int.TryParse(idTest, out id))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+    }
+
+    Common.TestBll.Delete(id);
+    Response.Redirect("~/Index");
+}
+else
+{
+    List<Test> tests = Common.TestBll.GetAll();
+    <hr />
+    <div class="container container-tests">
+        <div class="col-md-3 col-sm-6 hero-feature ">
+            @foreach (var item in tests)
+            {
+                <div class="thumbnail">
+                    <div>
+                        <h3>@item.Name</h3>
+                        <form action="~/Tests pages/Remove" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="btn btn-danger">Delete <i class="glyphicon glyphicon-remove"></i></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

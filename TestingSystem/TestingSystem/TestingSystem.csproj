@@ -134,6 +134,8 @@
     <Content Include="Tests pages\GetResultsTest.cshtml" />
     <Content Include="Logout.cshtml" />
     <Content Include="Search.cshtml" />
+    <Content Include="Tests pages\Remove.cshtml" />
+    <Content Include="Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

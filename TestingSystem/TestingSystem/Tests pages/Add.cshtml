@@ -1,4 +1,8 @@
 ﻿@using TestingSystem.Models;
+@if (!User.Identity.IsAuthenticated)
+{
+    Response.Redirect("~/Login");
+}
 @if (IsPost)
 {
     var name = Request["Name"];

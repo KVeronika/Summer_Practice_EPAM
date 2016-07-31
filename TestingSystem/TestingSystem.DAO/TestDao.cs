@@ -29,6 +29,24 @@ namespace TestingSystem.DAO
             }
         }
 
+        public void Delete(int idTest)
+        {
+            using (var con = new SqlConnection(conSqlr))
+            {
+                var query = "delete_test";
+
+                var command = new SqlCommand(query, con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                command.Parameters.AddWithValue("@id_test", idTest);
+
+                con.Open();
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public IEnumerable<Test> GetAll()
         {
             var temp = new List<Test>();

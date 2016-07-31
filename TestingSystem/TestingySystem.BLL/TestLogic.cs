@@ -15,6 +15,11 @@ namespace TestingSystem.BLL
             Common.TestDao.Add(name);
         }
 
+        public void Delete(int id)
+        {
+            Common.TestDao.Delete(id);
+        }
+
         public List<Test> GetAll()
         {
             return Common.TestDao.GetAll().ToList();

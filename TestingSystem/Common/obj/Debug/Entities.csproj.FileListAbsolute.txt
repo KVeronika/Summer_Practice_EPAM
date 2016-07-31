@@ -1,5 +1,4 @@
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\Common\bin\Debug\Common.dll
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\Common\bin\Debug\Common.pdb
-C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\Common\obj\Debug\Entities.csprojResolveAssemblyReference.cache
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\Common\obj\Debug\Common.dll
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\Common\obj\Debug\Common.pdb

@@ -12,5 +12,19 @@ namespace TestingSystem.BLL
             var tempPassword = password.ToCharArray().Select(n => (byte)n).ToArray();
             Common.UserDao.Add(login, mySHA256.ComputeHash(tempPassword));
         }
+
+        public bool CanRegister(string login)
+        {
+            if (string.IsNullOrWhiteSpace(Common.UserDao.CanRegister(login)))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CanLogin(string login, string password)
+        {
+            return Common.UserDao.CheckPassword(login, password);
+        }
     }
 }

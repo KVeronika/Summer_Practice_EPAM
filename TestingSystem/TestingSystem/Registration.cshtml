@@ -1,0 +1,65 @@
+﻿@{ 
+    bool failLogin = false;
+    bool failConfirmPassword = false;
+}
+@using TestingSystem.Models;
+@{
+    Layout = "~/_Layout.cshtml";
+}
+@if (IsPost)
+{
+    var login = Request["login"];
+    var password = Request["password"];
+    var confirmPassword = Request["confirmPassword"];
+
+    if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) ||
+        string.IsNullOrWhiteSpace(confirmPassword))
+    {
+        Response.SetStatus(HttpStatusCode.BadRequest);
+        return;
+    }
+
+    if (!password.Equals(confirmPassword))
+    {
+        failConfirmPassword = true;
+    }
+
+    if (Common.UserBll.CanRegister(login))
+    {
+        Common.UserBll.Add(login, password);
+    }
+    else
+    {
+        failLogin = true;
+    }
+}
+
+<div class="container">
+    @if (failLogin)
+    {
+        <div class="alert alert-danger" style="margin-top: 60px">
+            Login is already used
+        </div>
+    }
+    else if (failConfirmPassword)
+    {
+        <div class="alert alert-danger" style="margin-top: 60px">
+            Passwords do not match
+        </div>
+    }
+    <form class="form-group form-login" action="~/Registration" method="post" role="form">
+        <div class="form-group">
+            <label class="control-label" for="login">Login</label>
+            <input type="text" autocomplete="off" class="form-control" id="login" name="login" placeholder="Enter login" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <input type="password" autocomplete="off" class="form-control" id="password" name="password" placeholder="Enter password" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="confirmPassword">Confirm password</label>
+            <input type="password" autocomplete="off" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Enter password again" />
+        </div>
+        <button type="submit" class="btn btn-success">Registration</button>
+    </form>
+</div>

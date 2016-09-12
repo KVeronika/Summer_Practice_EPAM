@@ -13,15 +13,23 @@
 }
 @if (IsPost)
 {
-    var idTest = Request["id"];
+    try
+    {
+        var idTest = Request["id"];
 
-    int id;
-    if (!int.TryParse(idTest, out id))
+        int id;
+        if (!int.TryParse(idTest, out id))
+        {
+            Response.SetStatus(HttpStatusCode.BadRequest);
+        }
+
+        Common.TestBll.Delete(id);
+    }
+    catch(Exception)
     {
         Response.SetStatus(HttpStatusCode.BadRequest);
     }
 
-    Common.TestBll.Delete(id);
     Response.Redirect("~/Index");
 }
 else

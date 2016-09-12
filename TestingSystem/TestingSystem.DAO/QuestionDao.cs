@@ -1,4 +1,5 @@
 ﻿using DAOContracts;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -12,19 +13,27 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "add_question";
-                
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@id_test", idTest);
-                command.Parameters.AddWithValue("@question", question);
-                command.Parameters.AddWithValue("@answer", answer);
+                    var query = "add_question";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@id_test", idTest);
+                    command.Parameters.AddWithValue("@question", question);
+                    command.Parameters.AddWithValue("@answer", answer);
 
-                command.ExecuteNonQuery();
+                    con.Open();
+
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Linq;
+using System;
 
 namespace TestingSystem.DAO
 {
@@ -13,18 +14,26 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "add_user";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@login", login);
-                command.Parameters.AddWithValue("@password", password);
+                    var query = "add_user";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@login", login);
+                    command.Parameters.AddWithValue("@password", password);
 
-                command.ExecuteNonQuery();
+                    con.Open();
+
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
@@ -32,24 +41,32 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                string existingLogin = "";
-                var query = "existing_username";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@username", login);
+                    string existingLogin = "";
+                    var query = "existing_username";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@username", login);
 
-                var reader = command.ExecuteReader();
+                    con.Open();
 
-                while (reader.Read())
-                {
-                    existingLogin = (string)reader["c_login"];
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        existingLogin = (string)reader["c_login"];
+                    }
+                    return existingLogin;
                 }
-                return existingLogin;
+                catch (Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
@@ -57,28 +74,36 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "get_password_for_user";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@login", login);
+                    var query = "get_password_for_user";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@login", login);
 
-                var reader = command.ExecuteReader();
+                    con.Open();
 
-                if (reader.Read())
-                {
-                    var passwordthis = (byte[])reader["c_password"];
-                    SHA256 mySHA256 = SHA256Managed.Create();
-                    var temppaswotrs = password.ToCharArray().Select(n => (byte)n).ToArray();
-                    return UserDao.Compare(passwordthis, mySHA256.ComputeHash(temppaswotrs));
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        var passwordthis = (byte[])reader["c_password"];
+                        SHA256 mySHA256 = SHA256Managed.Create();
+                        var temppaswotrs = password.ToCharArray().Select(n => (byte)n).ToArray();
+                        return UserDao.Compare(passwordthis, mySHA256.ComputeHash(temppaswotrs));
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    return false;
+                    Log.For(this).Error(e);
+                    throw e;
                 }
             }
         }

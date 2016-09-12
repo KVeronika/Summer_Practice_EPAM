@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace TestingSystem.DAO
 {
@@ -15,17 +16,25 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "add_test";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@name", name);
+                    var query = "add_test";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@name", name);
 
-                command.ExecuteNonQuery();
+                    con.Open();
+
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
@@ -33,17 +42,25 @@ namespace TestingSystem.DAO
         {
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "delete_test";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@id_test", idTest);
+                    var query = "delete_test";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@id_test", idTest);
 
-                command.ExecuteNonQuery();
+                    con.Open();
+
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
@@ -53,56 +70,73 @@ namespace TestingSystem.DAO
 
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "get_all_tests";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+                    var query = "get_all_tests";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
 
-                var reader = command.ExecuteReader();
+                    con.Open();
 
-                while (reader.Read())
-                {
-                    int idTest = (int)reader["id_test"];
-                    string nameTest = (string)reader["name"];
-                    var tempTest = new Test(idTest, nameTest);
-                    temp.Add(tempTest);
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idTest = (int)reader["id_test"];
+                        string nameTest = (string)reader["name"];
+                        var tempTest = new Test(idTest, nameTest);
+                        temp.Add(tempTest);
+                    }
+
+                    return temp;
                 }
-
-                return temp;
+                catch (Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
         public IEnumerable<Question> GetAllQuestions(int id)
         {
+            
             var temp = new List<Question>();
 
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "get_all_questions_in_test";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@id_test", id);
+                    var query = "get_all_questions_in_test";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@id_test", id);
 
-                var reader = command.ExecuteReader();
+                    con.Open();
 
-                while (reader.Read())
-                {
-                    int idQuestion = (int)reader["id"];
-                    string textQuestion = (string)reader["question"];
-                    var tempQuestion = new Question(idQuestion, textQuestion);
-                    temp.Add(tempQuestion);
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idQuestion = (int)reader["id"];
+                        string textQuestion = (string)reader["question"];
+                        var tempQuestion = new Question(idQuestion, textQuestion);
+                        temp.Add(tempQuestion);
+                    }
+
+                    return temp;
                 }
-
-                return temp;
+                catch (Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
 
@@ -112,25 +146,33 @@ namespace TestingSystem.DAO
 
             using (var con = new SqlConnection(conSqlr))
             {
-                var query = "get_all_questions_in_test";
-
-                var command = new SqlCommand(query, con)
+                try
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@id_test", id);
+                    var query = "get_all_questions_in_test";
 
-                con.Open();
+                    var command = new SqlCommand(query, con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@id_test", id);
 
-                var reader = command.ExecuteReader();
+                    con.Open();
 
-                while (reader.Read())
-                {
-                    int idTest = (int)reader["id"];
-                    List<byte> answers = ((byte[])reader["answer"]).ToList<byte>();
-                    temp.Add(idTest, answers);
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int idTest = (int)reader["id"];
+                        List<byte> answers = ((byte[])reader["answer"]).ToList<byte>();
+                        temp.Add(idTest, answers);
+                    }
+                    return temp;
                 }
-                return temp;
+                catch (Exception e)
+                {
+                    Log.For(this).Error(e);
+                    throw e;
+                }
             }
         }
     }

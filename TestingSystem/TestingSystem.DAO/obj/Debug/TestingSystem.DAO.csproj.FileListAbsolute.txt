@@ -7,3 +7,5 @@ C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSys
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.csprojResolveAssemblyReference.cache
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.dll
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem.DAO\obj\Debug\TestingSystem.DAO.pdb
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\log4net.dll
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingSystem.DAO\bin\Debug\log4net.xml

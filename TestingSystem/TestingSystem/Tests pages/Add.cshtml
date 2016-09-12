@@ -5,14 +5,20 @@
 }
 @if (IsPost)
 {
-    var name = Request["Name"];
+    try
+    {
+        var name = Request["Name"];
 
-    if (string.IsNullOrWhiteSpace(name))
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            Response.SetStatus(HttpStatusCode.BadRequest);
+        }
+        Common.TestBll.Add(name);
+    }
+    catch (Exception)
     {
         Response.SetStatus(HttpStatusCode.BadRequest);
     }
-
-    Common.TestBll.Add(name);
     Response.Redirect("~/Index");
 }
 else

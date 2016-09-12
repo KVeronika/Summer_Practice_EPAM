@@ -60,3 +60,5 @@ C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSys
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem\bin\TestingySystem.BLL.pdb
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem\bin\DAOContracts.pdb
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingSystem\bin\TestingSystem.DAO.pdb
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingSystem\bin\log4net.dll
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingSystem\bin\log4net.xml

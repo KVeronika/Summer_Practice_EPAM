@@ -11,3 +11,5 @@ C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySy
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingSystem.BLL.csprojResolveAssemblyReference.cache
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingySystem.BLL.dll
 C:\Users\Veronika\documents\visual studio 2015\Projects\TestingSystem\TestingySystem.BLL\obj\Debug\TestingySystem.BLL.pdb
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\log4net.dll
+C:\Users\Veronika\Documents\Visual Studio 2015\Projects\TestingSystem\TestingySystem.BLL\bin\Debug\log4net.xml
